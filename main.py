@@ -4,7 +4,6 @@
 import os
 import sys
 import signal
-import time
 import datetime
 
 import gi
@@ -19,8 +18,8 @@ from gi.repository import Gio
 from itemTimbre import ItemTimbre
 
 from globales import getHorarios
-from globales import get_time_to_text
-from globales import get_text_to_time
+from globales import get_datetime_time_to_text
+from globales import get_text_to_datetime_time
 
 BASE_PATH = os.path.dirname(__file__)
 
@@ -73,9 +72,11 @@ class TimbreWindow(Gtk.ApplicationWindow):
         self.add(boxbase)
 
         self.__label = Gtk.Label("")
+        self.__label.get_style_context().add_class("labelHora")
         boxbase.pack_start(self.__label, False, False, 0)
 
         self.__timbresFrame = Gtk.Frame()
+        self.__timbresFrame.get_style_context().add_class("frameTimbres")
         self.__timbresFrame.set_label(" Timbres: ")
         self.__timbresFrame.add(Gtk.VBox())
 
@@ -91,16 +92,28 @@ class TimbreWindow(Gtk.ApplicationWindow):
         GLib.timeout_add(1000, self.__handle)
     
     def __handle(self):
-        tiempo = time.gmtime()
-        self.__label.set_text(get_time_to_text(tiempo))
+        tiempo = datetime.datetime.now().time()
+        self.__label.set_text(get_datetime_time_to_text(tiempo))
+
+        box = self.__timbresFrame.get_child()
+
+        timbres = sorted(self.__horarios.keys())
+        for timbre in timbres:
+            index = timbres.index(timbre)
+
+            if timbre < tiempo:
+                box.get_children()[index].get_style_context().remove_class("timbreactual")
+            else:
+                box.get_children()[index-1].get_style_context().add_class("timbreactual")
+                break
+
         return True
 
-    def __realized(self, widget):     
+    def __realized(self, widget):
         self.resize(640, 480)
         self.__timerLoad()
         
     def __salir(self, widget=None, senial=None):
-        #Gtk.main_quit()
         sys.exit(0)
 
     def __timerLoad(self):
@@ -108,13 +121,13 @@ class TimbreWindow(Gtk.ApplicationWindow):
         for child in box.get_children():
             child.destroy()
 
-        #tiempo = time.gmtime()
         self.__horarios = getHorarios()
         timbres = sorted(self.__horarios.keys())
         
-        for t in timbres:
-            item = ItemTimbre(get_time_to_text(t))
+        for timbre in timbres:
+            item = ItemTimbre(get_datetime_time_to_text(timbre))
             self.__timbresFrame.get_child().pack_start(item, False, False, 0)
+
         self.__timbresFrame.show_all()
 
 

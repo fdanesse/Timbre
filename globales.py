@@ -1,6 +1,7 @@
 import os
 import json
-import time
+
+import datetime  # https://docs.python.org/3/library/datetime.html
 
 from collections import OrderedDict
 
@@ -15,13 +16,12 @@ def get_file_data(path):
     return _dict
 
 
-def get_text_to_time(text):
-    return time.strptime(text, '%H:%M:%S')
+def get_text_to_datetime_time(text):
+    return datetime.datetime.strptime(text, '%H:%M:%S').time()
 
 
-def get_time_to_text(_time):
-    return time.strftime('%H:%M:%S', _time)
-
+def get_datetime_time_to_text(_time):
+    return datetime.time.strftime(_time, '%H:%M:%S')
 
 def getHorarios():
     data = get_file_data(os.path.join(BASE_PATH, "horarios.json"))
@@ -36,8 +36,11 @@ def getHorarios():
 
     _dict = OrderedDict()
     for key in data.keys():
-        for item in data[key]: 
-            timbre = get_text_to_time(item[0])
-            duracion = get_text_to_time(item[1])
+        for item in data[key]:
+            timbre = get_text_to_datetime_time(item[0])            
+            
+            duracion = get_text_to_datetime_time(item[1])
+            # FIXME: Timedelta? print (duracion, type(duracion))
+
             _dict[timbre] = {'duracion': duracion, 'turno': key}
     return _dict

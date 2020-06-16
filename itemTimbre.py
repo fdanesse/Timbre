@@ -13,12 +13,14 @@ class ItemTimbre(Gtk.HBox):
 
         Gtk.HBox.__init__(self)
 
+        self.get_style_context().add_class("timbre")
+
         self.__timbre = timbre
         self.__label = Gtk.Label(self.__timbre)
-        self.__progress = Gtk.ProgressBar()
+        #self.__progress = Gtk.ProgressBar()
 
         self.pack_start(self.__label, False, False, 0)
-        self.pack_start(self.__progress, False, False, 0)
+        #self.pack_start(self.__progress, False, False, 0)
 
         self.show_all()
 

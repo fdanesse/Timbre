@@ -1,27 +1,50 @@
-/*
-http://wiki.xfce.org/howto/gtk_theme
-https://developer.gnome.org/gtk3/3.0/GtkCssProvider.html
-background: url{../images/imagen.png} no-repeat;
-https://gist.github.com/carlos-jenkins/8923124#file-gtk-dark-css
-https://developer.gnome.org/gtk3/stable/chap-css-overview.html
-https://developer.gnome.org/gtk3/stable/chap-css-properties.html
-*/
-
-/*@define-color bg_toolbar1 #778899;
-@define-color jamedia1 #ff6600;
-@define-color jamedia2 #FF9800;
-@define-color jamedia3 #FFE0B2;
-@define-color green1 #388E3C;
-@define-color green2 #4CAF50;
-@define-color green3 #C8E6C9;
-@define-color border rgba(0,0,0, 0.5);*/
-
 window {
-    /*
-    background-image: image(@bg_toolbar1);
-    background-color: @bg_toolbar1;
     color: black;
-    */
-    font: 18pt "Comic Sans";
+    font: 10pt "Comic Sans";
     font-weight: normal;
+}
+
+.labelHora {
+    background-color: azure;
+    font: 20pt "Comic Sans";
+    font-weight: normal;
+    padding: 5px;
+    margin: 5px;
+    border: 0.1px solid black;
+}
+
+.frameTimbres {
+    padding: 5px;
+    margin: 5px;
+    border: 0.1px solid black;
+}
+
+.frameTimbres label {
+    color: blue;
+    font: 16pt "Comic Sans";
+    font-weight: bold;
+}
+
+.timbre {
+    padding: 3px;
+    margin: 3px;
+    margin-bottom: 0px;
+    background-color: antiquewhite;
+    border: 0.1px solid black;
+}
+
+.timbre label {
+    color: grey;
+    font: 10pt "Comic Sans";
+    font-weight: normal;
+}
+
+.timbreactual {
+    box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.8), 0 3px 5px 0 rgba(0, 0, 0, 0.19);
+}
+
+.timbreactual label {
+    color: red;
+    font: 14pt "Comic Sans";
+    font-weight: bold;
 }
