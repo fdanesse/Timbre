@@ -1,0 +1,27 @@
+/*
+http://wiki.xfce.org/howto/gtk_theme
+https://developer.gnome.org/gtk3/3.0/GtkCssProvider.html
+background: url{../images/imagen.png} no-repeat;
+https://gist.github.com/carlos-jenkins/8923124#file-gtk-dark-css
+https://developer.gnome.org/gtk3/stable/chap-css-overview.html
+https://developer.gnome.org/gtk3/stable/chap-css-properties.html
+*/
+
+/*@define-color bg_toolbar1 #778899;
+@define-color jamedia1 #ff6600;
+@define-color jamedia2 #FF9800;
+@define-color jamedia3 #FFE0B2;
+@define-color green1 #388E3C;
+@define-color green2 #4CAF50;
+@define-color green3 #C8E6C9;
+@define-color border rgba(0,0,0, 0.5);*/
+
+window {
+    /*
+    background-image: image(@bg_toolbar1);
+    background-color: @bg_toolbar1;
+    color: black;
+    */
+    font: 18pt "Comic Sans";
+    font-weight: normal;
+}
