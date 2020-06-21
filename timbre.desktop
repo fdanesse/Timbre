@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Timbre
+GenericName=Timbre
+Comment=
+Exec=/usr/bin/timbre
+Terminal=false
+Type=Application
+Icon=/usr/share/Timbre/logo.png
+Categories=GTK;GNOME;
+StartupNotify=true
