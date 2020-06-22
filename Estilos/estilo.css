@@ -4,9 +4,56 @@ window {
     font-weight: normal;
 }
 
+grid {
+    margin: 15px;
+    padding: 5px;
+    border: 2px solid #1A237E;
+
+}
+
+headerbar {
+    background-image: image(#1A237E);
+    background-color: #1A237E;
+    color: #BBDEFB;
+}
+
+headerbar button {
+    padding: 3px;
+    margin: 3px;
+    background-image: image(#1A237E);
+    background-color: #1A237E;
+    border: 0.2px solid #BBDEFB;
+    border-radius: 5px;
+    color: #BBDEFB;
+}
+
+headerbar button:hover {
+    background-image: image(#82B1FF);
+    background-color: #82B1FF;
+    border: 0.2px solid #BBDEFB;
+    border-radius: 5px;
+    color: #BBDEFB;
+}
+
+button {
+    font: 14pt "Comic Sans";
+    padding: 5px;
+    margin: 0px;
+    background-image: image(#BBDEFB);
+    background-color: #BBDEFB;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-image: image(#82B1FF);
+    background-color: #82B1FF;
+    font-weight: bold;
+    box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.8), 0 3px 5px 0 rgba(0, 0, 0, 0.19);
+}
+
 .labelHora {
-    background-color: azure;
-    font: 20pt "Comic Sans";
+    background-color: #E3F2FD;
+    font: 24pt "Comic Sans";
     font-weight: normal;
     padding: 5px;
     margin: 5px;
@@ -16,11 +63,11 @@ window {
 .frameTimbres {
     padding: 5px;
     margin: 5px;
-    border: 0.1px solid black;
+    /*border: 0.1px solid black;*/
 }
 
 .frameTimbres label {
-    color: blue;
+    color: #1A237E;
     font: 16pt "Comic Sans";
     font-weight: bold;
 }
@@ -28,8 +75,10 @@ window {
 .timbre {
     padding: 3px;
     margin: 3px;
+    margin-left: 10px;
+    margin-right: 10px;
     margin-bottom: 0px;
-    background-color: antiquewhite;
+    background-color: #E3F2FD;
     border: 0.1px solid black;
 }
 
@@ -40,11 +89,24 @@ window {
 }
 
 .timbreactual {
-    box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.8), 0 3px 5px 0 rgba(0, 0, 0, 0.19);
+    background-color: #EDE7F6;
+    box-shadow: 0 5px 6px 0 rgba(0, 0, 0, 0.8), 0 5px 6px 0 rgba(0, 0, 0, 0.19);
 }
 
 .timbreactual label {
     color: red;
     font: 14pt "Comic Sans";
     font-weight: bold;
+}
+
+.alerta {
+    color: red;
+}
+
+.turno0 {
+    background-color: #E8EAF6;
+}
+
+.turno1 {
+    background-color: #E3F2FD;
 }
