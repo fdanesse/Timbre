@@ -5,7 +5,7 @@ import os
 import sys
 import signal
 import datetime  # date --set "2020-06-21 21:45"
-import serial  # sudo apt-get install -y python3-serial
+import serial    # sudo apt-get install -y python3-serial
 
 import gi
 gi.require_version("Gtk", "3.0")
@@ -124,12 +124,12 @@ class TimbreWindow(Gtk.ApplicationWindow):
 
         self.__horarios = {}
         self.__timbre = None
-        self.__duracion = None
+        self.__duracion = 5
         self.__dia = 0
-        
+
         try:
-            #self.__arduino = serial.Serial('/dev/ttyUSB0', 9600, timeout=0.1)
-            self.__arduino = serial.Serial('/dev/ttyACM1', 9600, timeout=0.1)
+            self.__arduino = serial.Serial('/dev/ttyUSB0', 9600, timeout=0.1)
+            #self.__arduino = serial.Serial('/dev/ttyACM1', 9600, timeout=0.1)
             self.__arduino.flushInput()
             self.__error.set_text("")
         except:
@@ -140,6 +140,7 @@ class TimbreWindow(Gtk.ApplicationWindow):
         GLib.timeout_add(1000, self.__handle)
     
     def __config(self, widget):
+        # FIXME: Falta implementar
         pass
 
     def __timbreSonar(self, widget):
@@ -157,8 +158,8 @@ class TimbreWindow(Gtk.ApplicationWindow):
     def __handle(self):
         if not self.__arduino:
             try:
-                #self.__arduino = serial.Serial('/dev/ttyUSB0', 9600, timeout=0.1)
-                self.__arduino = serial.Serial('/dev/ttyACM1', 9600, timeout=0.1)
+                self.__arduino = serial.Serial('/dev/ttyUSB0', 9600, timeout=0.1)
+                #self.__arduino = serial.Serial('/dev/ttyACM1', 9600, timeout=0.1)
                 self.__arduino.flushInput()
                 self.__error.set_text("")
             except:
@@ -181,6 +182,7 @@ class TimbreWindow(Gtk.ApplicationWindow):
                 box.get_children()[index-1].get_style_context().add_class("timbreactual")
                 if self.__timbre != timbre:
                     self.__timbre = timbre
+                    # FIXME: Cambiar esto por un entero. No se necesita una duración de mas de unos segundos.
                     self.__duracion = self.__horarios[timbre]['duracion'].second + \
                         (self.__horarios[timbre]['duracion'].minute * 60)
                     # FIXME: Solo sonará de Lunes a Viernes
@@ -217,6 +219,7 @@ class TimbreWindow(Gtk.ApplicationWindow):
 
 
 if __name__ == "__main__":
+    # FIXME: Verificar porque necesita ejecución como root
     GObject.threads_init()
     Gdk.threads_init()
     timbre = Timbre()
